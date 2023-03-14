@@ -47,6 +47,7 @@ export function createCfDeployment(
 
       // Deploy CF script as Worker
       const workerScript = new cf.WorkerScript('worker', {
+        accountId: env('CLOUDFLARE_ACCOUNT_ID'),
         content: await fsPromises.readFile(
           join(__dirname, '..', '..', projectName, 'dist', 'index.js'),
           'utf-8',
